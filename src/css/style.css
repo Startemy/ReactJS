@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+}
+
+.container {
+  max-width: 1160px;
+  min-width: 374px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.main {
+  min-height: 100vh;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: min-content 1fr min-content;
+      grid-template-rows: -webkit-min-content 1fr -webkit-min-content;
+      grid-template-rows: min-content 1fr min-content;
+}
+
+.message {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  max-width: 250px;
+  border: 1px solid #970202;
+  border-radius: 5px;
+}
+
+.message > ul {
+  list-style: none;
+}
+
+.message > ul > li {
+  max-width: 200px;
+  border: 2px solid #037e1e;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 5px;
+}
+
+.message > div {
+  margin: 10px;
+}
+
+.message > div > input {
+  padding: 2px;
+}
+
+.message > div > button {
+  margin-left: 5px;
+  width: 60px;
+  height: 23px;
+  text-transform: uppercase;
+  background-color: #ababfa;
+  border-radius: 5px;
+}
+
+.message > button {
+  width: 100px;
+  text-transform: uppercase;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  margin-bottom: 10px;
+}
+
+.conteiner {
+  max-width: 1160px;
+  margin: 10px;
+}
+/*# sourceMappingURL=style.css.map */

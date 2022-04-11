@@ -1,0 +1,29 @@
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+}
+
+.container{
+  max-width: 1160px;
+  min-width: 374px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.main{
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: min-content 1fr min-content;
+}
+
+
+@import './components/form';
+@import './pages/app';
+
