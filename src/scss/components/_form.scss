@@ -1,0 +1,61 @@
+.message {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  max-width: 250px;
+  border: 1px solid rgb(151, 2, 2);
+  border-radius: 5px;
+  & > ul {
+    height: 250px;
+    list-style: none;
+    border: 1px solid rebeccapurple;
+    margin: 10px;
+    border-radius: 5px;
+    overflow: scroll;
+    scrollbar-width: none;
+    background-image: url("./../asset/resource/images/fon/fon.jpg");
+    & > li{
+      max-width: 200px;
+      border: 2px solid rgb(3, 126, 30);
+      border-radius: 5px;
+      margin: 10px;
+      padding: 5px;
+      background-color: azure;
+      list-style-position: outside;
+    }
+  }
+  & > div{
+    display: grid;
+    grid-template-columns: 1fr 30px;
+    align-content: center;
+      margin: 10px;
+    & > textarea {
+      padding: 2px;
+      outline: none;
+      overflow: scroll;
+      scrollbar-width: none;
+      width: 190px;
+      min-height: 30px;
+      resize: none; 
+      border: none;
+      
+    }
+    & > button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      & > img {
+        align-self: center;
+        width: 30px;
+      }
+    }
+  }
+  & > button {
+    width: 100px;
+    text-transform: uppercase;
+    justify-self: center;
+    margin-bottom: 10px;
+  }
+
+}
+
