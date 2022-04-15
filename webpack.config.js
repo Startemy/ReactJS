@@ -8,7 +8,7 @@ module.exports = {
   entry: path.resolve(__dirname, './src/index.js'),
   output: {
     filename: 'main.js',
-    path: path.resolve(__dirname,'./dist'),
+    path: path.resolve(__dirname, './dist'),
   },
 
   resolve: {
@@ -22,7 +22,7 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ['babel-loader']    
+        use: ['babel-loader']
       },
       {
         test: /\.(s(a|c)ss)$/,
@@ -39,10 +39,10 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-            name: '[name].[ext]',
-            limit: 8192,
-            outputPath: 'img',
-            esModule: false,
+              name: '[name].[ext]',
+              limit: 8192,
+              outputPath: 'img',
+              esModule: false,
             },
           }
         ],
