@@ -24,6 +24,10 @@
       padding: 5px;
       background-color: azure;
       list-style-position: outside;
+      &>p{
+        text-align: right;
+        font-size: 10px;
+      }
     }
   }
 

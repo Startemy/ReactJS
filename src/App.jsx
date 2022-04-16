@@ -1,8 +1,10 @@
+import React from 'react';
 import { Form } from './components/Func/Form';
 
 export const App = () => {
-  return <main className='conteiner'>
-    <Form />
-  </main>
-}
-
+  return (
+    <main className="conteiner">
+      <Form />
+    </main>
+  );
+};
