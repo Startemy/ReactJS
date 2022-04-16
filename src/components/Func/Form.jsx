@@ -36,7 +36,7 @@ export const Form = () => {
     setValue(event.target.value);
   }, []);
 
-  /**Меняем состояние нажатия Enter в textare */
+  /**Меняем состояние нажатия Enter в textarea */
   const onKey = (event) => {
     if (event.which == 13 && !event.shiftKey) {
       event.preventDefault();
@@ -62,7 +62,7 @@ export const Form = () => {
       {visible && (
         <ul className="message-text">
           {messageList.map((message) => (
-            <li onClick={() => deleteMsg(message.id)}>
+            <li key={message.id} onClick={() => deleteMsg(message.id)}>
               {message.msgText}
               <p>{message.created}</p>
             </li>
