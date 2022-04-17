@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect, createRef } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { Button } from './Button';
 import Input from './Input';
 
@@ -8,7 +8,8 @@ export const Form = () => {
   const [visible, setVisible] = useState(true);
   const [id, setId] = useState(1);
   const [author, setAuthor] = useState('');
-  const inputRef = createRef();
+  const inputRef = useRef(null);
+  const msgRef = useRef(null)
 
   const valueId = {
     id: id,
@@ -19,6 +20,7 @@ export const Form = () => {
 
   useEffect(() => {
     inputRef.current.focus();
+    msgRef.current.scrollTop = msgRef.current.scrollHeight;
   });
 
   /**Добавляем текст в массив отчищаем value и изменяем id */
@@ -36,7 +38,7 @@ export const Form = () => {
     setValue(event.target.value);
   }, []);
 
-  /**Меняем состояние нажатия Enter в textarea */
+  /**Меняем состояние нажатия Enter в textare */
   const onKey = (event) => {
     if (event.which == 13 && !event.shiftKey) {
       event.preventDefault();
@@ -52,15 +54,10 @@ export const Form = () => {
     ]);
   };
 
-  setTimeout(() => {
-    const block = document.querySelector('.message-text');
-    block.scrollTop = block.scrollHeight;
-  }, 50);
-
   return (
     <form className="message" action="#">
       {visible && (
-        <ul className="message-text">
+        <ul ref={ msgRef } className="message-text">
           {messageList.map((message) => (
             <li key={message.id} onClick={() => deleteMsg(message.id)}>
               {message.msgText}
