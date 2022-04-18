@@ -26,14 +26,13 @@ export const Form = () => {
       author: author,
       created: `${new Date().toLocaleString()}`,
     });
-
     setBotAnsw({
-      id: id + 1,
+      id: id,
       msgText: `Привет ${author}, я Бот`,
       author: 'Бот',
       created: `${new Date().toLocaleString()}`,
     });
-  }, [value, author, id]);
+  }, [author, value, id]);
 
   /**Ответ бота */
   useEffect(() => {
@@ -41,12 +40,13 @@ export const Form = () => {
       messageList.length > 0 &&
       messageList[messageList.length - 1].author !== 'Бот'
     ) {
-      setTimeout(() => {
+      const timeout = setTimeout(() => {
         setMessageList([...messageList, botAnsw]);
         setId(id + 1);
+        console.log(messageList);
       }, 1500);
       return () => {
-        clearTimeout();
+        clearTimeout(timeout);
       };
     }
   }, [messageList, botAnsw, id]);
@@ -55,9 +55,7 @@ export const Form = () => {
   const handleClick = () => {
     if (value && author) {
       setMessageList([...messageList, dataMsg]);
-      console.log(messageList);
       setValue('');
-      setAuthor('');
       setId(id + 1);
     } else if (!value && author) {
       inputRef.current.style.backgroundColor = 'red';
