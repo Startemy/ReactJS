@@ -1,17 +1,17 @@
 import React, { forwardRef } from 'react';
 
-export const Input = (props, ref) => {
+export const Author = (props, ref) => {
   return (
-    <textarea
+    <input
       ref={ref}
       type="text"
-      name="msg"
+      name="author"
       value={props.value}
       onChange={props.change}
       onKeyDown={props.onkey}
-      placeholder="Писать сюда"
-    ></textarea>
+      placeholder="Введите имя"
+    />
   );
 };
 
-export default forwardRef(Input);
+export default forwardRef(Author);

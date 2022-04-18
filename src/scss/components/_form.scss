@@ -1,6 +1,7 @@
 .message {
   display: grid;
   grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, auto);
   justify-content: center;
   max-width: 250px;
   border: 1px solid rgb(151, 2, 2);
@@ -30,6 +31,15 @@
       }
     }
   }
+  &>input {
+    width: 150px;
+    margin: 10px;
+    &:focus{
+      outline: none;
+    }
+    padding: 2px;
+    justify-self: flex-end;
+  }
 
   &>div {
     display: grid;
@@ -43,7 +53,7 @@
       overflow: scroll;
       scrollbar-width: none;
       width: 190px;
-      min-height: 30px;
+      min-height: 50px;
       resize: none;
       border: none;
     }
