@@ -40,7 +40,7 @@ describe('Button', () => {
     });
   });
 
-/**Оставил до следующего урока */
+  /**Оставил до следующего урока */
   // it('test exapmle', async () => {
   //   const onChange = jest.fn();
   //   render(<input type="checkbox" onChange={onChange} />);

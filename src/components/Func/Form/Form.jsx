@@ -119,7 +119,7 @@ export const Form = () => {
           ref={inputRef}
           onkey={onKey}
         />
-        <Button onButtonClick={() => {}}/>
+        <Button onButtonClick={() => {}} />
       </div>
     </form>
   );
