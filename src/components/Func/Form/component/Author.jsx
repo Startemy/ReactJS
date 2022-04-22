@@ -4,7 +4,6 @@ export const Author = (props, ref) => {
   return (
     <input
       ref={ref}
-      type="text"
       name="author"
       value={props.value}
       onChange={props.change}

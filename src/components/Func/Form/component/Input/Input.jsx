@@ -4,7 +4,6 @@ export const Input = (props, ref) => {
   return (
     <textarea
       ref={ref}
-      type="text"
       name="msg"
       value={props.value}
       onChange={props.change}

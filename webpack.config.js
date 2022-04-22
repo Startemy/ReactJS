@@ -13,6 +13,9 @@ module.exports = {
 
   resolve: {
     extensions: ['.jsx', '.js'],
+    alias: {
+      images: path.resolve(__dirname, 'src/asset/resource/images'),
+    },
   },
 
   devtool: 'eval-source-map',

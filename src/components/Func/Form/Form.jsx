@@ -1,8 +1,8 @@
 import React, { useState, useCallback, useEffect, useRef } from 'react';
 import Author from './component/Author';
-import { Button } from './component/Button';
-import Input from './component/Input';
-import MessageList from './component/MessageList';
+import { Button } from './component/Button/Button';
+import Input from './component/Input/Input';
+import MessageList from './component/MessageList/MessageList';
 
 export const Form = () => {
   const [messageList, setMessageList] = useState([]);
@@ -119,7 +119,7 @@ export const Form = () => {
           ref={inputRef}
           onkey={onKey}
         />
-        <Button />
+        <Button onButtonClick={() => {}}/>
       </div>
     </form>
   );

@@ -4,11 +4,13 @@
   "private": true,
   "homepage": "https://startemy.github.io/ReactJS/",
   "dependencies": {
+    "@babel/runtime": "^7.17.9",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.17.9",
+    "@babel/plugin-transform-runtime": "^7.17.0",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "@storybook/addon-actions": "^6.4.22",
@@ -17,6 +19,10 @@
     "@storybook/addon-links": "^6.4.22",
     "@storybook/react": "^6.4.22",
     "@storybook/testing-library": "^0.0.9",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.1.1",
+    "@testing-library/user-event": "^14.1.1",
+    "babel-jest": "^27.5.1",
     "babel-loader": "^8.2.4",
     "css-loader": "^6.7.1",
     "eslint": "^8.13.0",
@@ -30,6 +36,8 @@
     "html-loader": "^3.1.0",
     "html-webpack-plugin": "^5.5.0",
     "husky": "^4.3.8",
+    "jest": "^27.5.1",
+    "jest-transform-stub": "^2.0.0",
     "jsx-runtime": "^1.2.0",
     "mini-css-extract-plugin": "^2.6.0",
     "node-sass": "^7.0.1",
@@ -50,7 +58,10 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage --colors"
   },
   "husky": {
     "hooks": {

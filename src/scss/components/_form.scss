@@ -15,7 +15,10 @@
     border-radius: 5px;
     overflow: scroll;
     scrollbar-width: none;
-    background-image: url("./../asset/resource/images/fon/fon.jpg");
+    background-image: url("images/fon/fon.jpg");
+    &::-webkit-scrollbar{
+      width: 0;
+    }
 
     &>li {
       max-width: 200px;
@@ -57,6 +60,9 @@
       min-height: 50px;
       resize: none;
       border: none;
+      &::-webkit-scrollbar{
+        width: 0;
+      }
     }
 
     &>button {
