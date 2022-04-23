@@ -39,14 +39,4 @@ describe('Button', () => {
       timeout: 1100,
     });
   });
-
-  /**Оставил до следующего урока */
-  // it('test exapmle', async () => {
-  //   const onChange = jest.fn();
-  //   render(<input type="checkbox" onChange={onChange} />);
-  //   const checkbox = screen.getByRole('checkbox');
-  //   await userEvent.dblClick(checkbox);
-  //   expect(onChange).toHaveBeenCalledTimes(2);
-  //   expect(checkbox).not.toBeChecked();
-  // });
 });
