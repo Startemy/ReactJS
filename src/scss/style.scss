@@ -22,6 +22,14 @@ body {
   grid-template-rows: min-content 1fr min-content;
 }
 
+.chats {
+  display: grid;
+  max-width: 500px;
+  grid-template-columns: 250px 250px;
+  border: 1px solid rgb(151, 2, 2);
+  border-radius: 5px;
+}
 
 @import './components/form';
 @import './pages/app';
+@import './components/formChat'

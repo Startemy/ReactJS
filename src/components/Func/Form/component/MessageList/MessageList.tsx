@@ -1,6 +1,14 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, FC } from 'react';
+import { Message } from '../../Form'
 
-export const MessageList = (props, ref) => {
+interface MessageListProps {
+  messageList: Message[],
+  author: string,
+  deleteMsg: (event: number) => void
+  children?: JSX.Element | JSX.Element[];
+}
+
+export const MessageList: FC<MessageListProps> = (props, ref) => {
   return (
     <ul ref={ref} className="message-text">
       {props.messageList.map((message) => (
