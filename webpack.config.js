@@ -20,6 +20,15 @@ module.exports = {
 
   devtool: 'eval-source-map',
 
+  devServer: {
+    compress: true,
+    port: 8080,
+    client: {
+      logging: 'info',
+    },
+    historyApiFallback: true,
+  },
+
   module: {
     rules: [
       {

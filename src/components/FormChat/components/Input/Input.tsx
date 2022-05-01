@@ -3,15 +3,13 @@ import React, { FC } from 'react';
 interface NameChatProps {
   value: string,
   change: React.ChangeEventHandler<HTMLTextAreaElement | HTMLInputElement>,
-  onkey: React.KeyboardEventHandler<HTMLInputElement>
 }
 
-export const Input: FC<NameChatProps> = (props) => (
+export const Input: FC<NameChatProps> = ({ value, change }) => (
   <input
     name='nameChart'
-    value={props.value}
-    onChange={props.change}
-    onKeyDown={props.onkey}
+    value={value}
+    onChange={change}
     placeholder="Введите название чата"
   />
 );

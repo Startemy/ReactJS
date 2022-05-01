@@ -1,0 +1,9 @@
+.chats {
+  position: absolute;
+  display: grid;
+  // max-width: 500px;
+  min-height: 400px;
+  grid-template-columns: repeat(2, auto) ;
+  border: 1px solid rgb(151, 2, 2);
+  border-radius: 5px;
+}

@@ -1,0 +1,33 @@
+.message-text {
+  height: 250px;
+  list-style: none;
+  border: 1px solid rebeccapurple;
+  margin: 10px;
+  border-radius: 5px;
+  overflow: scroll;
+  scrollbar-width: none;
+  background-image: url("images/fon/fon.png");
+  background-position: center;
+  background-size: 110%;
+  background-repeat: no-repeat;
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+
+  &>li {
+    max-width: 200px;
+    border: 2px solid rgb(3, 126, 30);
+    border-radius: 5px;
+    margin: 10px;
+    padding: 5px;
+    background-color: azure;
+    list-style-position: outside;
+
+    &>p {
+      text-align: right;
+      font-size: 10px;
+      margin-top: 10px;
+    }
+  }
+}

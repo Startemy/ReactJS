@@ -10,7 +10,8 @@
     "@mui/icons-material": "^5.6.2",
     "@mui/material": "^5.6.2",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "react-router-dom": "^6.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.17.9",
@@ -58,6 +59,7 @@
     "node-sass": "^7.0.1",
     "prettier": "^2.6.2",
     "prop-types": "^15.8.1",
+    "react-transition-group": "^4.4.2",
     "sass": "^1.50.0",
     "sass-loader": "^12.6.0",
     "sb": "^6.4.22",
@@ -71,7 +73,7 @@
   "scripts": {
     "start": "webpack serve",
     "build": "webpack --mode=production",
-    "lint": "npx eslint ./src --ext .js,.jsx --fix",
+    "lint": "npx tsc --noEmit && npx eslint ./src --ext .js,.jsx --fix",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "storybook": "start-storybook -p 6006",
@@ -86,7 +88,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint",
-      "pre-push": "npm run lint && npm test"
+      "pre-push": "npm test"
     }
   },
   "loki": {
