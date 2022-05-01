@@ -5,14 +5,14 @@ const MiniCss = require('mini-css-extract-plugin');
 
 module.exports = {
   mode: 'development',
-  entry: path.resolve(__dirname, './src/index.js'),
+  entry: path.resolve(__dirname, './src/index.tsx'),
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, './build'),
   },
 
   resolve: {
-    extensions: ['.jsx', '.js'],
+    extensions: ['.jsx', '.js', '.tsx', '.ts'],
     alias: {
       images: path.resolve(__dirname, 'src/asset/resource/images'),
     },
@@ -23,7 +23,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(j|t)s(x)$/,
         exclude: /node_modules/,
         use: ['babel-loader']
       },
@@ -36,7 +36,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(jpg|png|svg)$/,
+        test: /\.(png|svg|jpg|jpeg|gif)$/,
         type: 'javascript/auto',
         use: [
           {
@@ -58,7 +58,8 @@ module.exports = {
     }),
     new MiniCss({
       attributes: {
-        filename: 'style.css'
+        filename: '[name].[contenthash].css',
+        chunkFilename: '[name].[contenthash].css',
       },
 
     }),
