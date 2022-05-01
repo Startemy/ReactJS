@@ -1,0 +1,20 @@
+.message-list-enter {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.message-list-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 1s, transform 1s;
+}
+
+.message-list-exit {
+  opacity: 1;
+}
+
+.message-list-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 1s, transform 1s;
+}

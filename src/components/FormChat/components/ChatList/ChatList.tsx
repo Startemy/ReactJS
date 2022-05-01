@@ -7,15 +7,17 @@ import Collapse from '@mui/material/Collapse';
 import SendIcon from '@mui/icons-material/Send';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
-import StarBorder from '@mui/icons-material/StarBorder'
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
+import { NavLink } from 'react-router-dom';
 
 import { Chats } from '../../FormChat'
 
-interface ChatListProps {
+export interface ChatListProps {
   chatList: Chats[]
+  deleteChat: (name: string) => void
 }
 
-export const ChatList: FC<ChatListProps> = (props) => {
+export const ChatList: FC<ChatListProps> = ({ chatList, deleteChat}) => {
   const [open, setOpen] = React.useState(true);
 
   const handleClick = () => {
@@ -24,7 +26,6 @@ export const ChatList: FC<ChatListProps> = (props) => {
 
   return (
     <List
-      sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
       component="nav"
       aria-labelledby="nested-list-subheader"
     >
@@ -35,17 +36,25 @@ export const ChatList: FC<ChatListProps> = (props) => {
         <ListItemText primary="Чаты" />
         {open ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>
-      {props.chatList.map((chats) => (
-      <Collapse in={open} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
-            <ListItemButton sx={{ pl: 4 }}>
-              <ListItemIcon>
-                <StarBorder />
-              </ListItemIcon>
-              <ListItemText primary={chats.name} />
-            </ListItemButton>
-          </List>
-      </Collapse>
+      {chatList.map((chat) => (
+        <Collapse key={chat.id} in={open} timeout="auto" unmountOnExit>
+          <NavLink
+            to={`/chats/${chat.name}`}
+            style={({ isActive }) => ({
+              color: isActive ? 'green' : 'black',
+            })}
+          >
+            <List component="div" disablePadding>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary={chat.name} />
+              </ListItemButton>
+            </List>
+          </NavLink>
+          <button
+            onClick={() => deleteChat(chat.name)}>
+            <DeleteOutlinedIcon />
+          </button>
+        </Collapse>
       ))}
     </List>
   );
