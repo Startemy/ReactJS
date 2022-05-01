@@ -1,0 +1,50 @@
+.form-chat {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 300px 30px 30px;
+  justify-content: center;
+  max-width: 250px;
+  border-radius: 5px;
+
+  .mui-list {
+    overflow: scroll;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+  }
+
+  &>ul {
+    list-style: none;
+    border: 1px solid rebeccapurple;
+    margin: 10px;
+    border-radius: 5px;
+    overflow: scroll;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+
+    &>li {
+      max-width: 150px;
+      border: 2px solid rgb(255, 154, 169);
+      border-radius: 5px;
+      margin: 10px;
+      padding: 5px;
+      background-color: azure;
+      list-style-position: outside;
+    }
+  }
+
+  &>input {
+    padding: 10px;
+    margin: 5px;
+  }
+
+  &>button {
+    margin: 5px;
+    height: 30px;
+  }
+}

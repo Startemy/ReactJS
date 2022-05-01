@@ -1,0 +1,202 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+}
+
+.container {
+  max-width: 1160px;
+  min-width: 374px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.main {
+  min-height: 100vh;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: min-content 1fr min-content;
+      grid-template-rows: -webkit-min-content 1fr -webkit-min-content;
+      grid-template-rows: min-content 1fr min-content;
+}
+
+.chats {
+  display: -ms-grid;
+  display: grid;
+  max-width: 500px;
+  -ms-grid-columns: 250px 250px;
+      grid-template-columns: 250px 250px;
+  border: 1px solid #970202;
+  border-radius: 5px;
+}
+
+.message {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: (auto)[3];
+      grid-template-rows: repeat(3, auto);
+  border-radius: 5px;
+}
+
+.message > ul {
+  height: 250px;
+  list-style: none;
+  border: 1px solid rebeccapurple;
+  margin: 10px;
+  border-radius: 5px;
+  overflow: scroll;
+  scrollbar-width: none;
+  background-image: url("images/fon/fon.png");
+  background-position: center;
+  background-size: 110%;
+  background-repeat: no-repeat;
+}
+
+.message > ul::-webkit-scrollbar {
+  width: 0;
+}
+
+.message > ul > li {
+  max-width: 200px;
+  border: 2px solid #037e1e;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 5px;
+  background-color: azure;
+  list-style-position: outside;
+}
+
+.message > ul > li > p {
+  text-align: right;
+  font-size: 10px;
+  margin-top: 10px;
+}
+
+.message > input {
+  width: 150px;
+  margin: 10px;
+  padding: 2px;
+  justify-self: flex-end;
+}
+
+.message > input:focus {
+  outline: none;
+}
+
+.message > div {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 30px;
+      grid-template-columns: 1fr 30px;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  margin: 10px;
+}
+
+.message > div > textarea {
+  padding: 2px;
+  outline: none;
+  overflow: scroll;
+  scrollbar-width: none;
+  width: 190px;
+  min-height: 50px;
+  resize: none;
+  border: none;
+  border-bottom: 1px solid gray;
+}
+
+.message > div > textarea::-webkit-scrollbar {
+  width: 0;
+}
+
+.message > div > button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.message > div > button > img {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  width: 30px;
+  height: 30px;
+}
+
+.message > button {
+  width: 100px;
+  text-transform: uppercase;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  margin-bottom: 10px;
+}
+
+.conteiner {
+  max-width: 1160px;
+  margin: 10px;
+}
+
+.form-chat {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 300px 30px 30px;
+      grid-template-rows: 300px 30px 30px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  max-width: 250px;
+  border-radius: 5px;
+}
+
+.form-chat .mui-list {
+  overflow: scroll;
+  scrollbar-width: none;
+}
+
+.form-chat .mui-list::-webkit-scrollbar {
+  width: 0;
+}
+
+.form-chat > ul {
+  list-style: none;
+  border: 1px solid rebeccapurple;
+  margin: 10px;
+  border-radius: 5px;
+  overflow: scroll;
+  scrollbar-width: none;
+}
+
+.form-chat > ul::-webkit-scrollbar {
+  width: 0;
+}
+
+.form-chat > ul > li {
+  max-width: 150px;
+  border: 2px solid #ff9aa9;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 5px;
+  background-color: azure;
+  list-style-position: outside;
+}
+
+.form-chat > input {
+  padding: 10px;
+  margin: 5px;
+}
+
+.form-chat > button {
+  margin: 5px;
+  height: 30px;
+}
+/*# sourceMappingURL=style.css.map */
