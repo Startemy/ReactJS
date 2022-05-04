@@ -46,10 +46,12 @@ export const ChatsPage: FC = () => {
 
   /**Добавляем чат */
   const addChat = (chats: Chats) => {
-    setMessagesList({
-      ...messagesList,
-      [chats.name]: []
-    })
+    if (!messagesList[chats.name]) {
+      setMessagesList({
+        ...messagesList,
+        [chats.name]: []
+      })
+    }
   }
 
   /**Добаляем сообщение*/
@@ -83,28 +85,28 @@ export const ChatsPage: FC = () => {
     return <Navigate replace to="/chats" />;
   }
 
-  if(chatId){
+  if (chatId) {
     return (
       <section className='chats'>
-      <div className="chat-list">
-        <ChatList
-          chatList={chatList}
-          deleteChat={deleteChat}
-        />
-        <FormChat
-          addChat={addChat}
-        />
-      </div>
-      <div className="message-list">
-        <MessageList
-          messageList={chatId ? messagesList[chatId] : []}
-          ref={msgRef}
-        />
-        <Form
-          addMessage={addMessage}
-        />
-      </div>
-    </section>
+        <div className="chat-list">
+          <ChatList
+            chatList={chatList}
+            deleteChat={deleteChat}
+          />
+          <FormChat
+            addChat={addChat}
+          />
+        </div>
+        <div className="message-list">
+          <MessageList
+            messageList={chatId ? messagesList[chatId] : []}
+            ref={msgRef}
+          />
+          <Form
+            addMessage={addMessage}
+          />
+        </div>
+      </section>
     )
   }
 

@@ -47,14 +47,14 @@ export const Form: FC<FormProps> = ({ addMessage }) => {
       setValue('');
       focus();
     }
-  },[author, value])
+  }, [author, value])
 
   const wrong = (value: string, author: string) => {
     if (!value && author) {
       inputRef.current!.style.borderBottomColor = 'red';
       inputRef.current!.focus();
     } else if (!author && value) {
-      authorRef.current!.style.borderColor = 'red', focus();;
+      authorRef.current!.style.borderColor = 'red', focus();
       authorRef.current!.focus();
     } else  if (!author && !value){
       inputRef.current!.style.borderBottomColor = 'red';

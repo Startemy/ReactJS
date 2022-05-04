@@ -5,12 +5,17 @@ const navigate = [
   {
     id: 1,
     to: '/',
-    name: 'Home',
+    name: 'home',
   },
   {
     id: 2,
+    to: '/profile',
+    name: 'profile',
+  },
+  {
+    id: 3,
     to: '/chats',
-    name: 'Chat',
+    name: 'chat',
   },
 ]
 
