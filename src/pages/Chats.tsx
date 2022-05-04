@@ -85,31 +85,6 @@ export const ChatsPage: FC = () => {
     return <Navigate replace to="/chats" />;
   }
 
-  if (chatId) {
-    return (
-      <section className='chats'>
-        <div className="chat-list">
-          <ChatList
-            chatList={chatList}
-            deleteChat={deleteChat}
-          />
-          <FormChat
-            addChat={addChat}
-          />
-        </div>
-        <div className="message-list">
-          <MessageList
-            messageList={chatId ? messagesList[chatId] : []}
-            ref={msgRef}
-          />
-          <Form
-            addMessage={addMessage}
-          />
-        </div>
-      </section>
-    )
-  }
-
   return (
     <section className='chats'>
       <div className="chat-list">
@@ -121,6 +96,17 @@ export const ChatsPage: FC = () => {
           addChat={addChat}
         />
       </div>
+      {chatId &&
+        <div className="message-list">
+          <MessageList
+            messageList={chatId ? messagesList[chatId] : []}
+            ref={msgRef}
+          />
+          <Form
+            addMessage={addMessage}
+          />
+        </div>
+      }
     </section>
-  );
+  )
 }

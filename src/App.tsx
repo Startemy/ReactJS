@@ -1,11 +1,13 @@
 import React, { FC, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ThemeContext, defaultContext } from './contexts/ThemeContext';
+import { Provider } from 'react-redux';
 
 import { Header } from './components/Header/Header';
 import { ChatsPage } from './pages/Chats';
 import { Home } from './pages/Home';
 import { Profile } from './pages/Profile';
+import { store } from './store';
 
 
 export const App: FC = () => {
@@ -16,6 +18,7 @@ export const App: FC = () => {
   };
   
   return (
+    <Provider store={store}>
     <ThemeContext.Provider value={{
       theme,
       toggleTheme,
@@ -40,5 +43,6 @@ export const App: FC = () => {
         </Routes>
       </BrowserRouter >
     </ThemeContext.Provider>
+    </Provider>
   );
 };

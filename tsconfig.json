@@ -106,6 +106,8 @@
   "include": [
     "src/**/*",
     "./jest.config.js",
-    "src", "custom.d.ts"
+    "src", "custom.d.ts",
+    "global.d.ts"
+    
   ]
 }
