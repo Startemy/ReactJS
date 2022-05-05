@@ -5,10 +5,8 @@ interface ThemeContext{
   toggleTheme?: () => void;
 };
 
-
 export const defaultContext: ThemeContext = {
   theme: 'light',
 };
-
 
 export const ThemeContext = React.createContext<ThemeContext>(defaultContext);

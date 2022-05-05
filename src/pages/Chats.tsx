@@ -8,7 +8,6 @@ import { FormChat } from "components/FormChat/FormChat";
 import { Chats } from "components/FormChat/FormChat";
 import { ChatList } from "components/FormChat/components/ChatList/ChatList";
 
-
 const initialMessage: Messages = {
   one: [{
     id: '1',

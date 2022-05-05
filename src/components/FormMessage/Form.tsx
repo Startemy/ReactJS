@@ -27,8 +27,6 @@ export const Form: FC<FormProps> = ({ addMessage }) => {
     focus();
   }, []);
 
-
-  /**Получаем текст из textarea */
   const handleChange = useCallback((event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     if (event.target.name == 'msg') {
       setValue(event.target.value);
@@ -51,11 +49,11 @@ export const Form: FC<FormProps> = ({ addMessage }) => {
 
   const wrong = (value: string, author: string) => {
     switch (value && author) {
-      case author: if (author==''){
+      case author: if (author == '') {
         authorRef.current!.style.borderColor = 'red', focus();
         authorRef.current!.focus();
       }
-      case value: if(value==''){
+      case value: if (value == '') {
         inputRef.current!.style.borderBottomColor = 'red';
         inputRef.current!.focus();
         break;
@@ -65,12 +63,16 @@ export const Form: FC<FormProps> = ({ addMessage }) => {
 
   return (
     <>
-      <form className="message" onSubmit={handleSubmit}>
+      <form
+        className="message"
+        onSubmit={handleSubmit}>
+
         <Author
           ref={authorRef}
           change={handleChange}
           value={author}
         />
+
         <div>
           <Input
             change={handleChange}
@@ -79,6 +81,7 @@ export const Form: FC<FormProps> = ({ addMessage }) => {
           />
           <Button />
         </div>
+        
       </form>
     </>
   );

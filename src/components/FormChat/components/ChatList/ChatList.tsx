@@ -51,7 +51,8 @@ export const ChatList: FC<ChatListProps> = ({ chatList, deleteChat}) => {
             </List>
           </NavLink>
           <button
-            onClick={() => deleteChat(chat.name)}>
+            name='deleteChat'
+            onClick={() => deleteChat(chat.name)} >
             <DeleteOutlinedIcon />
           </button>
         </Collapse>

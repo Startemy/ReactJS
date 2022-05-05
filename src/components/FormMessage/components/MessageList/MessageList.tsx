@@ -9,9 +9,7 @@ export const MessageList = forwardRef<HTMLUListElement, MessageListProps>(({ mes
   return (
     <ul ref={ref} className="message-text">
       {messageList.map((message) => (
-        <li
-          key={message.id}
-        >
+        <li key={message.id}>
           {message.msgText}
           <p>
             from {message.author}:{message.created}

@@ -4,7 +4,6 @@ interface WithClassesProps {
   classes: string;
 }
 
-
 export function WithClasses<T>(
   Component: React.ComponentType<T & WithClassesProps>
 ) {

@@ -31,7 +31,10 @@
     "paths": {
       "src/*": ["./src/*"],
       "images/*": ["./src/asset/resource/images/*"],
-      "components/*": ["./src/components/*"]
+      "components/*": ["./src/components/*"],
+      "contexts/*": ["./src/contexts/*"],
+      "store/*": ["./src/store/*"],
+
 
     },                                      /* Specify a set of entries that re-map imports to additional lookup locations. */
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
@@ -106,8 +109,7 @@
   "include": [
     "src/**/*",
     "./jest.config.js",
-    "src", "custom.d.ts",
+    "custom.d.ts",
     "global.d.ts"
-    
   ]
 }

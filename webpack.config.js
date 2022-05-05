@@ -17,6 +17,8 @@ module.exports = {
       images: path.resolve(__dirname, 'src/asset/resource/images'),
       src: path.resolve(__dirname, 'src'),
       components: path.resolve(__dirname, 'src/components'),
+      contexts: path.resolve(__dirname, 'src/contexts'),
+      store: path.resolve(__dirname, 'src/store'),
     },
   },
 
