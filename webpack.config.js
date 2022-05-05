@@ -15,6 +15,10 @@ module.exports = {
     extensions: ['.jsx', '.js', '.tsx', '.ts'],
     alias: {
       images: path.resolve(__dirname, 'src/asset/resource/images'),
+      src: path.resolve(__dirname, 'src'),
+      components: path.resolve(__dirname, 'src/components'),
+      contexts: path.resolve(__dirname, 'src/contexts'),
+      store: path.resolve(__dirname, 'src/store'),
     },
   },
 
@@ -32,7 +36,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(j|t)s(x)$/,
+        test: /\.(j|t)sx?$/,
         exclude: /node_modules/,
         use: ['babel-loader']
       },

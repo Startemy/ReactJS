@@ -42,5 +42,4 @@ export const FormChat: FC<FormChatProps> = ({ addChat }) => {
       <Button />
     </form>
   );
-
 }

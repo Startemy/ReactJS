@@ -9,12 +9,14 @@
     padding: 5px;
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(2, 100px);
-    gap: 5px;
+    grid-template-columns: repeat(3, auto);
+    gap: 30px;
 
     &>li {
       &>a {
         text-decoration: none;
+        text-transform: uppercase;
+        font-weight: bold;
         &:active {
           color: aquamarine;
         }

@@ -13,7 +13,7 @@ export interface Message {
 }
 
 interface FormProps {
-  addMessage: (valeu: string, author: string) => void;
+  addMessage: (value: string, author: string) => void;
 }
 
 export const Form: FC<FormProps> = ({ addMessage }) => {
@@ -27,8 +27,6 @@ export const Form: FC<FormProps> = ({ addMessage }) => {
     focus();
   }, []);
 
-
-  /**Получаем текст из textarea */
   const handleChange = useCallback((event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     if (event.target.name == 'msg') {
       setValue(event.target.value);
@@ -47,30 +45,34 @@ export const Form: FC<FormProps> = ({ addMessage }) => {
       setValue('');
       focus();
     }
-  },[author, value])
+  }, [author, value])
 
   const wrong = (value: string, author: string) => {
-    if (!value && author) {
-      inputRef.current!.style.borderBottomColor = 'red';
-      inputRef.current!.focus();
-    } else if (!author && value) {
-      authorRef.current!.style.borderColor = 'red', focus();;
-      authorRef.current!.focus();
-    } else  if (!author && !value){
-      inputRef.current!.style.borderBottomColor = 'red';
-      authorRef.current!.style.borderColor = 'red';
-      inputRef.current!.focus();
+    switch (value && author) {
+      case author: if (author == '') {
+        authorRef.current!.style.borderColor = 'red', focus();
+        authorRef.current!.focus();
+      }
+      case value: if (value == '') {
+        inputRef.current!.style.borderBottomColor = 'red';
+        inputRef.current!.focus();
+        break;
+      }
     }
   }
 
   return (
     <>
-      <form className="message" onSubmit={handleSubmit}>
+      <form
+        className="message"
+        onSubmit={handleSubmit}>
+
         <Author
           ref={authorRef}
           change={handleChange}
           value={author}
         />
+
         <div>
           <Input
             change={handleChange}
@@ -79,6 +81,7 @@ export const Form: FC<FormProps> = ({ addMessage }) => {
           />
           <Button />
         </div>
+        
       </form>
     </>
   );
