@@ -10,7 +10,7 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import { NavLink } from 'react-router-dom';
 
-import { Chats } from '../../FormChat'
+import { Chats } from 'components/FormChat/FormChat'
 
 export interface ChatListProps {
   chatList: Chats[]

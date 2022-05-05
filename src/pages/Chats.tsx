@@ -2,11 +2,11 @@ import React, { FC, useState, useCallback, useEffect, useRef, useMemo } from "re
 import { nanoid } from 'nanoid';
 import { useParams, Navigate } from "react-router-dom";
 
-import { MessageList } from "../components/MessageList/MessageList";
-import { Form, Message } from "../components/FormMessage/Form";
-import { FormChat } from "../components/FormChat/FormChat";
-import { Chats } from "../components/FormChat/FormChat";
-import { ChatList } from "../components/FormChat/components/ChatList/ChatList";
+import { MessageList } from "components/FormMessage/components/MessageList/MessageList";
+import { Form, Message } from "components/FormMessage/Form";
+import { FormChat } from "components/FormChat/FormChat";
+import { Chats } from "components/FormChat/FormChat";
+import { ChatList } from "components/FormChat/components/ChatList/ChatList";
 
 
 const initialMessage: Messages = {
@@ -25,7 +25,7 @@ interface Messages {
 export const ChatsPage: FC = () => {
   const [messagesList, setMessagesList] = useState<Messages>(initialMessage);
 
-  /**Читаем ссылку на чат */
+  /**Читаем адресную строку на чат */
   const { chatId } = useParams()
 
   const msgRef = useRef<HTMLUListElement>(null);
@@ -71,7 +71,7 @@ export const ChatsPage: FC = () => {
     }
   }, [chatId, messagesList])
 
-  /**Переделать на удаление по кнопке */
+  /**Удаление чата*/
   const deleteChat = useCallback((name: string) => {
     const newMessages: Messages = { ...messagesList };
     delete newMessages[name];
@@ -80,7 +80,6 @@ export const ChatsPage: FC = () => {
     });
   }, [messagesList]);
 
-  /**Слишком много вызовов API Location или History за короткий промежуток времени. */
   if (chatId && !chatList.find((chat) => chat.name === chatId)) {
     return <Navigate replace to="/chats" />;
   }

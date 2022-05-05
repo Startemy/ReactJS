@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import { Message } from '../FormMessage/Form'
+import { Message } from 'components/FormMessage/Form'
 
 interface MessageListProps {
   messageList: Message[],
