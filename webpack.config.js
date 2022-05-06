@@ -7,7 +7,8 @@ module.exports = {
   mode: 'development',
   entry: path.resolve(__dirname, './src/index.tsx'),
   output: {
-    filename: 'main.js',
+    filename: '[name].bundle.[chunkhash].js',
+    clean: true,
     path: path.resolve(__dirname, './build'),
   },
 
