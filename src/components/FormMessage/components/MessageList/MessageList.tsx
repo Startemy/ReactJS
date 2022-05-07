@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, FC } from 'react';
-import { useSelector } from 'react-redux';
+import { shallowEqual, useSelector } from 'react-redux';
 
 import { Message } from 'src/store/chats/reducer';
 import { selectChats } from 'src/store/chats/selectors';
@@ -9,8 +9,10 @@ interface MessageListProps {
 }
 
 export const MessageList: FC<MessageListProps> = ({ messages }) => {
-  const messagesList = useSelector(selectChats)
+  const messagesList = useSelector(selectChats, shallowEqual)
   const msgRef = useRef<HTMLUListElement>(null);
+
+
 
   useEffect(() => {
     if (msgRef && msgRef.current) {

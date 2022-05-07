@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { shallowEqual, useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
 import List from '@mui/material/List';
@@ -17,7 +17,7 @@ import { selectChatList } from 'src/store/chats/selectors';
 import { deleteChat } from 'src/store/chats/actions';
 
 export const ChatList = () => {
-  const chatList = useSelector(selectChatList)
+  const chatList = useSelector(selectChatList, shallowEqual)
   const dispatch = useDispatch()
   const [open, setOpen] = React.useState(true);
 

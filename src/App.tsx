@@ -8,6 +8,7 @@ import { ChatsPage } from './pages/Chats';
 import { Home } from './pages/Home';
 import { Profile } from './pages/Profile';
 import { store } from './store';
+import { AboutWithConnect } from './pages/About';
 
 export const App = () => {
   const [theme, setTheme] = useState(defaultContext.theme);
@@ -36,6 +37,7 @@ export const App = () => {
                     <ChatsPage />}
                 />
               </Route>
+              <Route path='/about' element={<AboutWithConnect />} />
             </Route>
 
             <Route path='*' element={<h1>404 Page not found</h1>} />

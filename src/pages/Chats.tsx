@@ -1,6 +1,6 @@
 import React, { Suspense } from "react"
 import { useParams, Navigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { shallowEqual, useSelector } from "react-redux";
 
 import { Form } from "components/FormMessage/Form";
 import { FormChat } from "components/FormChat/FormChat";
@@ -19,8 +19,12 @@ const MessageList = React.lazy(() =>
 
 export const ChatsPage = () => {
 
-  const chatList = useSelector(selectChatList)
-  const messagesList = useSelector(selectChats)
+  const chatList = useSelector(
+    selectChatList, 
+    (prev, next) => prev && next ? prev.length === next.length : false
+  )
+
+  const messagesList = useSelector(selectChats, shallowEqual)
 
   const { chatId } = useParams()
 
