@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { addMessage } from 'src/store/chats/actions';
+import { addMessage, addMessageWithReply } from 'src/store/chats/actions';
 
 import { Author } from './components/Author/Author';
 import { Button } from './components/Button/Button';
@@ -34,7 +34,7 @@ export const Form = () => {
     event.preventDefault();
     wrong(value, author)
     if (value && author && chatId) {
-      dispatch(addMessage(chatId, author, value))
+      dispatch(addMessageWithReply(chatId, author, value))
       setValue('');
       focus();
     }

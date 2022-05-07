@@ -19,10 +19,11 @@ export const App = () => {
 
   return (
     <Provider store={store}>
-      <ThemeContext.Provider value={{
-        theme,
-        toggleTheme,
-      }}>
+      <ThemeContext.Provider
+        value={{
+          theme,
+          toggleTheme,
+        }}>
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<Header />}>

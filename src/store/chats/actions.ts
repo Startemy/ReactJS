@@ -1,3 +1,5 @@
+import { Dispatch } from 'react';
+import { useDispatch } from 'react-redux';
 import { AddChat, AddMessage, DeleteChat } from './types';
 
 export const ADD_CHAT = 'CHATS::ADD_CHAT';
@@ -14,9 +16,29 @@ export const deleteChat: DeleteChat = (name: string) => ({
   name,
 });
 
-export const addMessage: AddMessage = (chatId: string, author:string, value:string) => ({
+export const addMessage: AddMessage = (chatId: string, author: string, msgText: string) => ({
   type: ADD_MESSAGE,
   chatId,
   author,
-  msgText: value,
+  msgText
 });
+
+let timeout: NodeJS.Timeout;
+
+export const addMessageWithReply =
+  (chatId: string, author: string, msgText: string) => 
+    (dispatch: Dispatch<ReturnType<AddMessage>>) => {
+      dispatch(addMessage(chatId, author, msgText));
+
+      if (author !== 'Ботя') {
+        if (timeout) {
+          clearTimeout(timeout);
+        }
+
+        timeout = setTimeout(() => {
+          dispatch(
+            addMessage(chatId, 'Ботя', `Привет, ${author}! Я Ботя`)
+          );
+        }, 1000);
+      }
+    };
