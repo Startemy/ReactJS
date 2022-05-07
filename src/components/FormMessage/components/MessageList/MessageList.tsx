@@ -1,14 +1,28 @@
-import React, { forwardRef } from 'react';
-import { Message } from 'components/FormMessage/Form'
+import React, { useRef, useEffect, FC } from 'react';
+import { shallowEqual, useSelector } from 'react-redux';
+
+import { Message } from 'src/store/chats/reducer';
+import { selectChats } from 'src/store/chats/selectors';
 
 interface MessageListProps {
-  messageList: Message[],
+  messages: Message[];
 }
 
-export const MessageList = forwardRef<HTMLUListElement, MessageListProps>(({ messageList }, ref) => {
+export const MessageList: FC<MessageListProps> = ({ messages }) => {
+  const messagesList = useSelector(selectChats, shallowEqual)
+  const msgRef = useRef<HTMLUListElement>(null);
+
+
+
+  useEffect(() => {
+    if (msgRef && msgRef.current) {
+      msgRef.current.scrollTop = msgRef.current.scrollHeight;
+    }
+  }, [messagesList]);
+
   return (
-    <ul ref={ref} className="message-text">
-      {messageList.map((message) => (
+    <ul ref={msgRef} className="message-text">
+      {messages.map((message) => (
         <li key={message.id}>
           {message.msgText}
           <p>
@@ -18,4 +32,4 @@ export const MessageList = forwardRef<HTMLUListElement, MessageListProps>(({ mes
       ))}
     </ul>
   );
-})
+}

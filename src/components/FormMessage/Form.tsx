@@ -1,25 +1,18 @@
-import React, { useState, useCallback, useEffect, useRef, FC } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { addMessage } from 'src/store/chats/actions';
 
 import { Author } from './components/Author/Author';
 import { Button } from './components/Button/Button';
 import { Input } from './components/Input/Input';
 
 
-export interface Message {
-  id: string,
-  msgText: string,
-  author: string,
-  created: string,
-}
-
-interface FormProps {
-  addMessage: (value: string, author: string) => void;
-}
-
-export const Form: FC<FormProps> = ({ addMessage }) => {
+export const Form = () => {
   const [value, setValue] = useState('');
   const [author, setAuthor] = useState('');
-
+  const { chatId } = useParams()
+  const dispatch = useDispatch()
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const authorRef = useRef<HTMLInputElement>(null);
 
@@ -40,8 +33,8 @@ export const Form: FC<FormProps> = ({ addMessage }) => {
   const handleSubmit = useCallback((event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     wrong(value, author)
-    if (value && author) {
-      addMessage(value, author)
+    if (value && author && chatId) {
+      dispatch(addMessage(chatId, author, value))
       setValue('');
       focus();
     }
@@ -81,7 +74,7 @@ export const Form: FC<FormProps> = ({ addMessage }) => {
           />
           <Button />
         </div>
-        
+
       </form>
     </>
   );

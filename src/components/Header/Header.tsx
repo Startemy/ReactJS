@@ -17,6 +17,11 @@ const navigate = [
     to: '/chats',
     name: 'chat',
   },
+  {
+    id: 4,
+    to: '/about',
+    name: 'about',
+  },
 ]
 
 export const Header: FC = () => (

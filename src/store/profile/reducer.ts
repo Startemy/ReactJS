@@ -1,5 +1,6 @@
-import { CHANGE_NAME, TOGGLE_PROFILE } from './actions';
 import { Reducer } from 'redux';
+
+import { CHANGE_NAME, TOGGLE_PROFILE } from './actions';
 import { ProfileActions } from './types';
 
 export interface ProfileState {

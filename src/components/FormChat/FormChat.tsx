@@ -1,34 +1,24 @@
-import React, { useState, useCallback, FC } from 'react';
-import { nanoid } from 'nanoid';
+import React, { useState, useCallback } from 'react';
 
 import { Input } from './components/Input/Input';
 import { Button } from './components/Button/Button';
+import { useDispatch } from 'react-redux';
+import { addChat } from 'src/store/chats/actions';
 
-export interface Chats {
-  id: string,
-  name: string,
-}
-
-interface FormChatProps {
-  addChat: (chats: Chats) => void;
-}
-
-export const FormChat: FC<FormChatProps> = ({ addChat }) => {
-  const [name, setName] = useState('');
+export const FormChat = () => {
+  const [name, setName] = useState('')
+  const dispatch = useDispatch()
 
   const handleChange = useCallback((event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     if (event.target.name == 'nameChart') {
-      setName(event.target.value);
+      setName(event.target.value)
     }
   }, []);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (name) {
-      addChat({ 
-        id: nanoid(),
-        name,
-      })
+      dispatch(addChat(name))
       setName('');
     }
   }

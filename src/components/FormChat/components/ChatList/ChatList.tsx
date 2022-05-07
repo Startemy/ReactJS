@@ -1,4 +1,8 @@
-import React, { FC } from 'react';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { shallowEqual, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -8,16 +12,13 @@ import SendIcon from '@mui/icons-material/Send';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
-import { NavLink } from 'react-router-dom';
 
-import { Chats } from 'components/FormChat/FormChat'
+import { selectChatList } from 'src/store/chats/selectors';
+import { deleteChat } from 'src/store/chats/actions';
 
-export interface ChatListProps {
-  chatList: Chats[]
-  deleteChat: (name: string) => void
-}
-
-export const ChatList: FC<ChatListProps> = ({ chatList, deleteChat}) => {
+export const ChatList = () => {
+  const chatList = useSelector(selectChatList, shallowEqual)
+  const dispatch = useDispatch()
   const [open, setOpen] = React.useState(true);
 
   const handleClick = () => {
@@ -52,7 +53,7 @@ export const ChatList: FC<ChatListProps> = ({ chatList, deleteChat}) => {
           </NavLink>
           <button
             name='deleteChat'
-            onClick={() => deleteChat(chat.name)} >
+            onClick={() => { dispatch(deleteChat(chat.name)) }} >
             <DeleteOutlinedIcon />
           </button>
         </Collapse>
