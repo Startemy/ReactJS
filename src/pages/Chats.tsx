@@ -20,7 +20,7 @@ const MessageList = React.lazy(() =>
 export const ChatsPage = () => {
 
   const chatList = useSelector(
-    selectChatList, 
+    selectChatList,
     (prev, next) => prev && next ? prev.length === next.length : false
   )
 
@@ -51,6 +51,6 @@ export const ChatsPage = () => {
           </div>
         </Suspense>
       }
-    </section >
+    </section>
   )
 }

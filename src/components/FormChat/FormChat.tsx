@@ -9,7 +9,7 @@ export const FormChat = () => {
   const [name, setName] = useState('')
   const dispatch = useDispatch()
 
-  const handleChange = useCallback((event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+  const handleChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.name == 'nameChart') {
       setName(event.target.value)
     }

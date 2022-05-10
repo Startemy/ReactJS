@@ -12,8 +12,6 @@ export const MessageList: FC<MessageListProps> = ({ messages }) => {
   const messagesList = useSelector(selectChats, shallowEqual)
   const msgRef = useRef<HTMLUListElement>(null);
 
-
-
   useEffect(() => {
     if (msgRef && msgRef.current) {
       msgRef.current.scrollTop = msgRef.current.scrollHeight;
@@ -33,3 +31,5 @@ export const MessageList: FC<MessageListProps> = ({ messages }) => {
     </ul>
   );
 }
+
+MessageList.displayName = 'MessageList'

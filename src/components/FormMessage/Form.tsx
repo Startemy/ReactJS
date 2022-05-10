@@ -20,7 +20,7 @@ export const Form = () => {
   const authorRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    focus();
+    inputRef.current!.focus();
   }, []);
 
   const handleChange = useCallback((event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {

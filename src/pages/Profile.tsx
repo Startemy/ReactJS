@@ -11,7 +11,11 @@ export const Profile: FC = () => {
 
   const visible = useSelector(selectVisible);
   const name = useSelector(selectName);
-  
+  const changeNameProfile = (value:string) =>{
+    dispatch(changeName(value)) 
+    setValue('')
+  }
+
   const dispatch = useDispatch();
   return (
     <>
@@ -34,7 +38,7 @@ export const Profile: FC = () => {
           onChange={(e) => setValue(e.target.value)}
           value={value}
         />
-        <button onClick={() => { dispatch(changeName(value)), setValue('') }}>change name</button>
+        <button onClick={() => { changeNameProfile(value) }}>change name</button>
       </div>
     </>
   );
