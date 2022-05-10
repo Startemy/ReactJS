@@ -15,17 +15,19 @@ export interface Messages {
   [key: string]: Message[]
 }
 
-const initialMessag: Messages = {
-  first: [{
-    id: '1',
-    msgText: 'Hello Artem',
-    author: 'Artem',
-    created: '06.05.2022',
-  }]
+const initialMessage: Messages = {
+  first: [
+    {
+      id: '1',
+      msgText: 'Hello Artem',
+      author: 'Artem',
+      created: '06.05.2022',
+    }
+  ]
 }
 
 export const chatReducer: Reducer<Messages, ChatsActions> = (
-  state = initialMessag,
+  state = initialMessage,
   action
 ) => {
   switch (action.type) {
@@ -48,7 +50,7 @@ export const chatReducer: Reducer<Messages, ChatsActions> = (
           {
             id: nanoid(),
             msgText: action.msgText,
-            author:  action.author,
+            author: action.author,
             created: `${new Date().toLocaleString()}`,
           },
         ],

@@ -1,5 +1,4 @@
 import { Dispatch } from 'react';
-import { useDispatch } from 'react-redux';
 import { AddChat, AddMessage, DeleteChat } from './types';
 
 export const ADD_CHAT = 'CHATS::ADD_CHAT';

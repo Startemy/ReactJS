@@ -1,14 +1,10 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ThemeContext, defaultContext } from './contexts/ThemeContext';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 
-import { Header } from './components/Header/Header';
-import { ChatsPage } from './pages/Chats';
-import { Home } from './pages/Home';
-import { Profile } from './pages/Profile';
-import { store } from './store';
-import { AboutWithConnect } from './pages/About';
+import { persistor, store } from './store';
+import { AppRoute } from './components/AppRoute';
 
 export const App = () => {
   const [theme, setTheme] = useState(defaultContext.theme);
@@ -24,26 +20,9 @@ export const App = () => {
           theme,
           toggleTheme,
         }}>
-        <BrowserRouter>
-          <Routes>
-            <Route path='/' element={<Header />}>
-              <Route index element={<Home />} />
-              <Route path='/profile' element={<Profile />} />
-
-              <Route path='/chats'>
-                <Route index element={<ChatsPage />} />
-                <Route
-                  path=':chatId'
-                  element={
-                    <ChatsPage />}
-                />
-              </Route>
-              <Route path='/about' element={<AboutWithConnect />} />
-            </Route>
-
-            <Route path='*' element={<h1>404 Page not found</h1>} />
-          </Routes>
-        </BrowserRouter >
+        <PersistGate loading={null} persistor={persistor}>
+          <AppRoute />
+        </PersistGate>
       </ThemeContext.Provider>
     </Provider>
   );

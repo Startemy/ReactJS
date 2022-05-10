@@ -1,7 +1,10 @@
 import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { addMessage, addMessageWithReply } from 'src/store/chats/actions';
+import { ThunkDispatch } from 'redux-thunk';
+import { addMessageWithReply } from 'src/store/chats/actions';
+import { Messages } from 'src/store/chats/reducer';
+import { AddMessage } from 'src/store/chats/types';
 
 import { Author } from './components/Author/Author';
 import { Button } from './components/Button/Button';
@@ -12,7 +15,7 @@ export const Form = () => {
   const [value, setValue] = useState('');
   const [author, setAuthor] = useState('');
   const { chatId } = useParams()
-  const dispatch = useDispatch()
+  const dispatch = useDispatch<ThunkDispatch<Messages, void, ReturnType<AddMessage>>>()
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const authorRef = useRef<HTMLInputElement>(null);
 
@@ -55,27 +58,24 @@ export const Form = () => {
   }
 
   return (
-    <>
-      <form
-        className="message"
-        onSubmit={handleSubmit}>
+    <form
+      className="message"
+      onSubmit={handleSubmit}>
 
-        <Author
-          ref={authorRef}
+      <Author
+        ref={authorRef}
+        change={handleChange}
+        value={author}
+      />
+
+      <div>
+        <Input
           change={handleChange}
-          value={author}
+          value={value}
+          ref={inputRef}
         />
-
-        <div>
-          <Input
-            change={handleChange}
-            value={value}
-            ref={inputRef}
-          />
-          <Button />
-        </div>
-
-      </form>
-    </>
+        <Button />
+      </div>
+    </form>
   );
 };
