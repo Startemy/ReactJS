@@ -8,7 +8,7 @@ interface MessageListProps {
   messages: Message[];
 }
 
-export const MessageList: FC<MessageListProps> = ({ messages }) => {
+const MessageList: FC<MessageListProps> = ({ messages }) => {
   const messagesList = useSelector(selectChats, shallowEqual)
   const msgRef = useRef<HTMLUListElement>(null);
 
@@ -32,4 +32,5 @@ export const MessageList: FC<MessageListProps> = ({ messages }) => {
   );
 }
 
-MessageList.displayName = 'MessageList'
+MessageList.displayName = "MessageList"
+export {MessageList}

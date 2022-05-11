@@ -43,6 +43,7 @@
     "babel-jest": "^27.5.1",
     "babel-loader": "^8.2.4",
     "babel-plugin-module-resolver": "^4.1.0",
+    "chromatic": "^6.5.4",
     "css-loader": "^6.7.1",
     "eslint": "^8.13.0",
     "eslint-config-prettier": "^8.5.0",
@@ -89,7 +90,8 @@
     "test:coverage": "jest --coverage --colors",
     "loki:update": "npm run build-storybook && loki update --requireReference --reactUri file:./storybook-static",
     "loki:approve": "loki approve",
-    "loki:test": "npm run build-storybook && loki test --requireReference --reactUri file:./storybook-static"
+    "loki:test": "npm run build-storybook && loki test --requireReference --reactUri file:./storybook-static",
+    "chromatic": "npx chromatic --project-token=a15ab77fb042"
   },
   "husky": {
     "hooks": {

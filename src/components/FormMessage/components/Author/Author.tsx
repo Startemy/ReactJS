@@ -5,7 +5,7 @@ interface AuthorProps {
   change: React.ChangeEventHandler<HTMLTextAreaElement | HTMLInputElement>,
 }
 
-export const Author = forwardRef<HTMLInputElement, AuthorProps>(({ value, change }, ref) => (
+const Author = forwardRef<HTMLInputElement, AuthorProps>(({ value, change }, ref) => (
   <input
     ref={ref}
     name="author"
@@ -14,3 +14,6 @@ export const Author = forwardRef<HTMLInputElement, AuthorProps>(({ value, change
     placeholder="Введите имя"
   />
 ))
+
+Author.displayName = "Author"
+export {Author}

@@ -5,7 +5,7 @@ interface InputProps {
   change: React.ChangeEventHandler<HTMLTextAreaElement | HTMLInputElement>,
 }
 
-export const Input = forwardRef<HTMLTextAreaElement, InputProps>(({ value, change }, ref) => (
+const Input = forwardRef<HTMLTextAreaElement, InputProps>(({ value, change }, ref) => (
   <textarea
     ref={ref}
     name="msg"
@@ -15,4 +15,5 @@ export const Input = forwardRef<HTMLTextAreaElement, InputProps>(({ value, chang
   />
 ))
 
-Input.displayName = 'Input'
+Input.displayName = "Input"
+export {Input}
