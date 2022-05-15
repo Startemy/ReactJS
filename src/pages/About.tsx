@@ -1,34 +1,16 @@
 import React, { FC } from 'react';
-import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleProfile } from 'src/store/profile/profileSlice';
+import { selectVisible } from 'src/store/profile/selectors';
 
-import { StoreState } from 'src/store';
-import { toggleProfile } from 'src/store/profile/actions';
-
-interface AboutProps {
-  visible: boolean;
-  toggle: () => void;
-}
-
-export const About: FC<AboutProps> = ({ visible, toggle }) => {
+export const About: FC = () => {
+  const visible = useSelector(selectVisible);
+  const dispatch = useDispatch();
   return (
     <>
       <h2>About</h2>
-      <input type="checkbox" checked={visible} onChange={e => { }} />
-      <button onClick={() => toggle()}>change visible</button>
+      <input type="checkbox" checked={visible} readOnly />
+      <button onClick={() => dispatch(toggleProfile())}>change visible</button>
     </>
   );
 };
-
-const mapStateToProps = (state: StoreState) => ({
-  visible: state.profile.visible,
-});
-
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  toggle: () => dispatch(toggleProfile()),
-});
-
-export const AboutWithConnect = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(About);

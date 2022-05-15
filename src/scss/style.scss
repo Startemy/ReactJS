@@ -15,9 +15,9 @@ body {
   padding: 10px;
 }
 
-@import './components/form';
-@import './pages/app';
-@import './components/formChat';
-@import './components/messageList';
 @import './components/hader';
 @import './pages/chats';
+
+@import './components/form';
+@import './components/formChat';
+@import './components/messageList';

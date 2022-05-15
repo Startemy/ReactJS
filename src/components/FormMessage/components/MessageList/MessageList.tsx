@@ -1,18 +1,16 @@
 import React, { useRef, useEffect, FC } from 'react';
 import { shallowEqual, useSelector } from 'react-redux';
 
-import { Message } from 'src/store/chats/reducer';
+import { Message } from 'src/store/chats/chatSlice';
 import { selectChats } from 'src/store/chats/selectors';
 
 interface MessageListProps {
   messages: Message[];
 }
 
-export const MessageList: FC<MessageListProps> = ({ messages }) => {
-  const messagesList = useSelector(selectChats, shallowEqual)
+const MessageList: FC<MessageListProps> = ({ messages }) => {
+  const messagesList = useSelector(selectChats, shallowEqual);
   const msgRef = useRef<HTMLUListElement>(null);
-
-
 
   useEffect(() => {
     if (msgRef && msgRef.current) {
@@ -32,4 +30,7 @@ export const MessageList: FC<MessageListProps> = ({ messages }) => {
       ))}
     </ul>
   );
-}
+};
+
+MessageList.displayName = 'MessageList';
+export { MessageList };

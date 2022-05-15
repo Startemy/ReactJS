@@ -1,5 +1,6 @@
-import React, { FC } from "react"
-import { Outlet, NavLink } from "react-router-dom"
+/* eslint-disable linebreak-style */
+import React, { FC } from 'react';
+import { Outlet, NavLink } from 'react-router-dom';
 
 const navigate = [
   {
@@ -32,7 +33,9 @@ export const Header: FC = () => (
           <li key={link.id}>
             <NavLink
               to={link.to}
-              style={({ isActive }) => ({ color: isActive ? 'green' : 'black' })}
+              style={({ isActive }) => ({
+                color: isActive ? 'green' : 'black',
+              })}
             >
               {link.name}
             </NavLink>

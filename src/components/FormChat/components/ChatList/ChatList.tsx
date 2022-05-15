@@ -14,11 +14,11 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 
 import { selectChatList } from 'src/store/chats/selectors';
-import { deleteChat } from 'src/store/chats/actions';
+import { deleteChat } from 'src/store/chats/chatSlice';
 
 export const ChatList = () => {
-  const chatList = useSelector(selectChatList, shallowEqual)
-  const dispatch = useDispatch()
+  const chatList = useSelector(selectChatList, shallowEqual);
+  const dispatch = useDispatch();
   const [open, setOpen] = React.useState(true);
 
   const handleClick = () => {
@@ -26,10 +26,7 @@ export const ChatList = () => {
   };
 
   return (
-    <List
-      component="nav"
-      aria-labelledby="nested-list-subheader"
-    >
+    <List component="nav" aria-labelledby="nested-list-subheader">
       <ListItemButton onClick={handleClick}>
         <ListItemIcon>
           <SendIcon />
@@ -52,12 +49,15 @@ export const ChatList = () => {
             </List>
           </NavLink>
           <button
-            name='deleteChat'
-            onClick={() => { dispatch(deleteChat(chat.name)) }} >
+            name="deleteChat"
+            onClick={() => {
+              dispatch(deleteChat({ name: chat.name }));
+            }}
+          >
             <DeleteOutlinedIcon />
           </button>
         </Collapse>
       ))}
     </List>
   );
-}
+};
