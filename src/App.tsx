@@ -19,7 +19,8 @@ export const App = () => {
         value={{
           theme,
           toggleTheme,
-        }}>
+        }}
+      >
         <PersistGate loading={null} persistor={persistor}>
           <AppRoute />
         </PersistGate>

@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input render with snapshot 1`] = `
+<DocumentFragment>
+  <textarea
+    name="msg"
+    placeholder="Писать сюда"
+  />
+</DocumentFragment>
+`;
