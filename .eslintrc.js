@@ -36,8 +36,8 @@ module.exports = {
     'linebreak-style': ['error', 'unix'],
     quotes: ['warn', 'single'],
     // semi: ['warn', 'always'],
-    "react/jsx-uses-react": "error",
-    "react/jsx-uses-vars": "error",
+    'react/jsx-uses-react': 'error',
+    'react/jsx-uses-vars': 'error',
   },
   overrides: [
     {
@@ -47,4 +47,4 @@ module.exports = {
       },
     },
   ],
-}
+};
