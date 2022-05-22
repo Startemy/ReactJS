@@ -1,15 +1,16 @@
 .header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   margin: 10px;
-  background-color: coral;
+  background-color: rgb(201, 253, 240);
   min-height: 70px;
 
   &>ul {
     padding: 5px;
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(4, auto);
+    grid-template-columns: repeat(5, auto);
     gap: 30px;
 
     &>li {
@@ -17,10 +18,29 @@
         text-decoration: none;
         text-transform: uppercase;
         font-weight: bold;
+
         &:active {
           color: aquamarine;
         }
       }
+    }
+  }
+
+  & .login {
+    margin-right: 30px;
+    padding: 10px 20px;
+    cursor: pointer;
+    background: linear-gradient(90deg, #b45f27, #068043);
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+    border: none;
+    box-shadow:
+      5px 5px 10px -5px rgba(34, 60, 80, 0.6);
+
+    &:active {
+      box-shadow:
+        5px 5px 5px -5px rgba(34, 60, 80, 0.6) inset;
+      transform: translateY(2px);
     }
   }
 }
