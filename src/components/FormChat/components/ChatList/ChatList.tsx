@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { shallowEqual, useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
 
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -14,15 +13,19 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 
 import { selectChatList } from 'src/store/chats/selectors';
-import { deleteChat } from 'src/store/chats/chatSlice';
+import { remove } from 'firebase/database';
+import { getChatsById } from 'src/services/firebase';
 
 export const ChatList = () => {
   const chatList = useSelector(selectChatList, shallowEqual);
-  const dispatch = useDispatch();
   const [open, setOpen] = React.useState(true);
 
   const handleClick = () => {
     setOpen(!open);
+  };
+
+  const handleDeleteChat = (id: string) => {
+    remove(getChatsById(id));
   };
 
   return (
@@ -37,7 +40,7 @@ export const ChatList = () => {
       {chatList.map((chat) => (
         <Collapse key={chat.id} in={open} timeout="auto" unmountOnExit>
           <NavLink
-            to={`/chats/${chat.name}`}
+            to={`/chats/${chat.id}`}
             style={({ isActive }) => ({
               color: isActive ? 'green' : 'black',
             })}
@@ -51,7 +54,7 @@ export const ChatList = () => {
           <button
             name="deleteChat"
             onClick={() => {
-              dispatch(deleteChat({ name: chat.name }));
+              handleDeleteChat(chat.id);
             }}
           >
             <DeleteOutlinedIcon />

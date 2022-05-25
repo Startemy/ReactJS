@@ -1,16 +1,15 @@
 import React, { useRef, useEffect, FC } from 'react';
-import { shallowEqual, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { StoreState } from 'src/store';
+import { selectChat } from 'src/store/chats/selectors';
 
-import { Message } from 'src/store/chats/chatSlice';
-import { selectChats } from 'src/store/chats/selectors';
-
-interface MessageListProps {
-  messages: Message[];
-}
-
-const MessageList: FC<MessageListProps> = ({ messages }) => {
-  const messagesList = useSelector(selectChats, shallowEqual);
+const MessageList: FC = () => {
+  const { chatId } = useParams();
   const msgRef = useRef<HTMLUListElement>(null);
+  const messagesList = useSelector((state: StoreState) =>
+    selectChat(state, chatId || '')
+  );
 
   useEffect(() => {
     if (msgRef && msgRef.current) {
@@ -20,12 +19,10 @@ const MessageList: FC<MessageListProps> = ({ messages }) => {
 
   return (
     <ul ref={msgRef} className="message-text">
-      {messages.map((message) => (
+      {messagesList.map((message) => (
         <li key={message.id}>
           {message.msgText}
-          <p>
-            from {message.author}:{message.created}
-          </p>
+          <p>from {message.author}</p>
         </li>
       ))}
     </ul>
