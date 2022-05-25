@@ -1,19 +1,21 @@
 import React, { FC, useState } from 'react';
+import { signUp } from 'src/services/firebase';
+import { useNavigate } from 'react-router-dom';
 
-import { logIn } from 'src/services/firebase';
-
-export const SignIn: FC = () => {
+export const SignUp: FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     setError('');
 
     try {
-      await logIn(email, password);
+      await signUp(email, password);
+      navigate('/signin');
     } catch (err) {
       setError((err as Error).message);
     }
@@ -21,7 +23,7 @@ export const SignIn: FC = () => {
 
   return (
     <>
-      <h2>Sign In</h2>
+      <h2>Sign Up</h2>
       <hr />
       <form onSubmit={handleSubmit}>
         <p>Логин:</p>
@@ -37,7 +39,7 @@ export const SignIn: FC = () => {
           value={password}
         />
         <br />
-        <button>sign in</button>
+        <button>sign up</button>
 
         {error && <p style={{ color: 'red' }}>{error}</p>}
       </form>

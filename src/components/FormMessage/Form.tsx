@@ -1,10 +1,9 @@
+import { push } from 'firebase/database';
+import { nanoid } from 'nanoid';
 import React, { useState, useCallback, useEffect, useRef } from 'react';
-import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { ThunkDispatch } from 'redux-thunk';
-import { addMessageWithReply, Messages } from 'src/store/chats/chatSlice';
-import { AddMessage } from 'src/store/chats/types';
 
+import { getMessageListById } from 'src/services/firebase';
 import { Author } from './components/Author/Author';
 import { Button } from './components/Button/Button';
 import { Input } from './components/Input/Input';
@@ -13,8 +12,6 @@ export const Form = () => {
   const [msgText, setMsgText] = useState('');
   const [author, setAuthor] = useState('');
   const { chatId } = useParams();
-  const dispatch =
-    useDispatch<ThunkDispatch<Messages, void, ReturnType<AddMessage>>>();
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const authorRef = useRef<HTMLInputElement>(null);
 
@@ -44,12 +41,17 @@ export const Form = () => {
       event.preventDefault();
       wrong(msgText, author);
       if (msgText && author && chatId) {
-        dispatch(addMessageWithReply({ chatId, author, msgText }));
-        setMsgText('');
-        inputRef.current?.focus();
+        const id = nanoid();
+        push(getMessageListById(chatId), {
+          author: author,
+          id,
+          msgText: msgText,
+        });
       }
+      setMsgText('');
+      inputRef.current?.focus();
     },
-    [author, chatId, dispatch, msgText]
+    [author, msgText, chatId]
   );
 
   const wrong = (value: string, author: string) => {

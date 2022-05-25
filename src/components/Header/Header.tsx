@@ -1,8 +1,8 @@
 /* eslint-disable linebreak-style */
-import React, { FC } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { FC, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Outlet, NavLink, Link } from 'react-router-dom';
-import { changeAuth } from 'src/store/profile/profileSlice';
+import { logOut } from 'src/services/firebase';
 import { selectAuth } from 'src/store/profile/selectors';
 
 const navigate = [
@@ -34,8 +34,18 @@ const navigate = [
 ];
 
 export const Header: FC = () => {
-  const dispatch = useDispatch();
   const auth = useSelector(selectAuth);
+  const [error, setError] = useState('');
+
+  const handleSignOut = async () => {
+    setError('');
+    try {
+      await logOut();
+    } catch (err) {
+      setError((err as Error).message);
+    }
+  };
+
   return (
     <>
       <header className="header">
@@ -54,14 +64,20 @@ export const Header: FC = () => {
           ))}
         </ul>
         {auth ? (
-          <button className="login" onClick={() => dispatch(changeAuth(false))}>
+          <button className="login" onClick={handleSignOut}>
             Logout
           </button>
         ) : (
-          <Link to="/signin">
-            <button className="login">SingIn</button>
-          </Link>
+          <>
+            <Link to="/signin">
+              <button className="login">SingIn</button>
+            </Link>
+            <Link to="/signup">
+              <button className="login">SingUp</button>
+            </Link>
+          </>
         )}
+        {error && <p style={{ color: 'red' }}>{error}</p>}
       </header>
       <main className="container">
         <Outlet />

@@ -2,12 +2,12 @@ import React, { useState, useCallback } from 'react';
 
 import { Input } from './components/Input/Input';
 import { Button } from './components/Button/Button';
-import { useDispatch } from 'react-redux';
-import { addChat } from 'src/store/chats/chatSlice';
+import { chatsRef } from 'src/services/firebase';
+import { push } from 'firebase/database';
+import { nanoid } from 'nanoid';
 
 export const FormChat = () => {
   const [name, setName] = useState('');
-  const dispatch = useDispatch();
 
   const handleChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,7 +21,15 @@ export const FormChat = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (name) {
-      dispatch(addChat({ name }));
+      const id = nanoid();
+      push(chatsRef, {
+        id,
+        messageList: {
+          empty: true,
+        },
+        name,
+      });
+
       setName('');
     }
   };

@@ -1,9 +1,11 @@
-import React, { FC, useContext, useState } from 'react';
+import React, { FC, useContext, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { ThemeContext } from 'contexts/ThemeContext';
 import { changeName, toggleProfile } from 'src/store/profile/profileSlice';
 import { selectName, selectVisible } from 'src/store/profile/selectors';
+import { onValue, update } from 'firebase/database';
+import { userRef } from 'src/services/firebase';
 
 export const Profile: FC = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -11,12 +13,22 @@ export const Profile: FC = () => {
 
   const visible = useSelector(selectVisible);
   const name = useSelector(selectName);
-  const changeNameProfile = (value: string) => {
-    dispatch(changeName(value));
-    setValue('');
-  };
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    onValue(userRef, (snapshot) => {
+      const user = snapshot.val();
+      dispatch(changeName(user.name || ''));
+    });
+  }, [dispatch]);
+
+  const handleChangeName = async () => {
+    update(userRef, {
+      name: value,
+    });
+  };
+
   return (
     <>
       <h2>Profile</h2>
@@ -38,13 +50,7 @@ export const Profile: FC = () => {
           onChange={(e) => setValue(e.target.value)}
           value={value}
         />
-        <button
-          onClick={() => {
-            changeNameProfile(value);
-          }}
-        >
-          change name
-        </button>
+        <button onClick={handleChangeName}>change name</button>
       </div>
     </>
   );
